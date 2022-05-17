@@ -1,0 +1,110 @@
+﻿@model DocumentManagement.Models.DocumentModel
+
+@{
+    ViewData["Title"] = "Create";
+
+}
+
+<style>
+    .createContainer{
+        width:70%;
+    }
+
+
+    .imgContainer{
+        width:30%;
+    }
+
+    .imgContainer img{
+        position:relative;
+        right:350px;
+        bottom:50px;
+        width:900px;
+    }
+
+    .mainContainer{
+        display:flex;
+        justify-content:space-between;
+    }
+
+    hr, form-label{
+        color:var(--purpleMain);
+    }
+</style>
+
+<style type="text/css" media="screen and (max-width:900px)">
+     .imgContainer img{
+        display:none;
+    }
+
+</style>
+<h1>Create</h1>
+
+<h4>Document</h4>
+<hr class="w-100"/>
+
+<div class="mainContainer">
+    
+<div class="createContainer">
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Title" class="control-label mb-2 font-monospace"></label>
+                <input asp-for="Title" class="form-control" />
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                @if(ViewBag.processError == true){
+                    <span class="text-danger">Please register a new <a href="~/processes/create">process </a>before continue. </span><br />
+                }
+                <label asp-for="Process" class="control-label mb-2 font-monospace"></label>
+                <select asp-for="ProcessId" class="form-select mb-2 font-monospace">
+                @foreach (var process in ViewBag.process) {
+                    <option class="font-monospace" value="@process.Id">@process.Name</option>
+                    }
+                </select>
+                <span asp-validation-for="ProcessId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Category" class="control-label mb-2 font-monospace"></label>
+                <input asp-for="Category" class="form-control" />
+                <span asp-validation-for="Category" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Code" class="control-label mb-2 font-monospace"></label>
+                <input asp-for="Code" class="form-control" />
+                <span asp-validation-for="Code" class="text-danger"></span>
+            </div>
+           <div class="mb-4" >
+                <label for="formFile" asp-for="@Model.File" class="form-label font-monospace">Chose your document</label>
+                <input class="form-control" asp-for="@Model.File" type="file" >
+                <span asp-validation-for="@Model.File" class="text-danger"></span>
+            </div>
+            <div class="form-group mb-5">
+                <input type="submit" value="Create" class="btnMain btn" />
+                @if(ViewBag.insertDocumentError == true){
+                    <span class="text-danger">An error occurred while registering the document, please contact the admin</span>
+                }    
+            </div>
+        </form>
+
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+</div>
+
+<div class="imgContainer">
+    <img src="~/assets/create.svg"/>
+    </div>
+</div>
+
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

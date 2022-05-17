@@ -1,0 +1,110 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+
+    Layout = "";
+}
+<link rel="icon" type="image/x-icon" href="~/assets/icon.png"/>
+<title>Document Management</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;1,600&family=Roboto:wght@100;300;400;500;700&display=swap" rel="stylesheet">
+
+<style>
+    body{
+        margin:0;
+        padding:0;
+        box-sizing:border-box;
+        font-family: 'Roboto', sans-serif;
+    }
+
+    .title button{
+        padding:  15px 40px 15px 40px;
+        border: none;
+        border-radius:20px;
+        cursor:pointer;
+        background-color: #4D61FC;
+        color:#DADDDF;
+        font-size:20px;
+    }
+
+    .title  button:hover{
+        background-color: #A6B0FE;
+        transition:1s;
+        border: 1px solid  #4D61FC;
+        color:white;
+
+    }
+
+    .title h1{
+        font-size: 5rem;
+        color:#4D61FC;
+    }
+
+    .title p{
+        font-size:2rem;
+        max-width:400px;
+        color:#A6B0FE;
+
+        margin-bottom:40px;
+
+    }
+
+    .title{
+        margin-left:100px;
+    }
+   
+    .containerMain{
+        background-color:#fff;
+        height:100vh;
+        display:flex;
+        justify-content:space-between;
+        align-items:center;
+    }
+    img{
+        width:1000px;
+    }
+    .img{
+        margin-right:50px;
+        max-width: 50%;
+    }
+     
+</style>
+
+<style type="text/css" media="screen and (max-width:900px)">
+       .containerMain{
+            align-content:center;
+            align-items:center;
+        }
+        .title{
+        margin-left:20px;
+    }
+        .img{
+            display:none;
+        }
+
+    </style>
+
+<div class="containerMain">
+
+    <div class="title">
+        <h1>Document<br />Management</h1>
+        <p>Helping you to control your documents in a simple way.</p>
+        <button onclick="redirect()">Start</button>
+        
+    </div>
+    <div class="img">
+        <img src="~/assets/home.svg" />
+    </div>
+
+</div>
+
+
+<script>
+function redirect() {
+   ;
+      location.href = './documents/index';
+}
+
+</script>

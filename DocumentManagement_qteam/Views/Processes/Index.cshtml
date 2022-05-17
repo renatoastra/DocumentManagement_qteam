@@ -1,0 +1,64 @@
+﻿@model IEnumerable<DocumentManagement.Models.Process>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<style>
+    h1{
+        padding:50px 0 30px  0;
+    }
+    .createButton{
+        padding:  10px 20px 10px 20px;
+        border: none;
+        cursor:pointer;
+        background-color: var(--purpleMain);
+        color:#DADDDF;
+        font-size:20px;
+    }
+
+    .createButton:hover{
+        background-color:var(--purpleSecond);
+        color:white;
+        transition:1s;
+    }
+    .table{
+        margin-top:50px;
+    }
+    .table td{
+        color:var(--purpleSecond);
+    }
+
+     .table th{
+        color:var(--purpleMain);
+        font-size:24px;
+    }
+</style>
+
+<h1>My processes</h1>
+
+<p>
+    <a  class="createButton" asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

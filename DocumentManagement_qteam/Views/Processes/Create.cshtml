@@ -1,0 +1,73 @@
+﻿@model DocumentManagement.Models.Process
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<style>
+    .createContainer{
+        width:70%;
+    }
+
+
+    .imgContainer{
+        width:30%;
+    }
+
+    .imgContainer img{
+        position:relative;
+        right:350px;
+        bottom:50px;
+        width:900px;
+    }
+
+    .mainContainer{
+        display:flex;
+        justify-content:space-between;
+    }
+
+    hr, form-label{
+        color:var(--purpleMain);
+    }
+</style>
+
+
+<style type="text/css" media="screen and (max-width:900px)">
+     .imgContainer img{
+        display:none;
+    }
+</style>
+<h1>Create new process</h1>
+
+<hr class="w-100"/>
+<div class="mainContainer">
+    <div class="createContainer">
+        <div class="row">
+            <div class="col-md-4">
+                <form asp-action="Create">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <label asp-for="Name" class="control-label  mb-2 font-monospace"></label>
+                        <input asp-for="Name" class="form-control" />
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Create" class="btn btn-primary" />
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div>
+            <a asp-action="Index">Back to List</a>
+        </div>
+
+    </div>
+    <div class="imgContainer">
+    <img src="~/assets/create.svg"/>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
