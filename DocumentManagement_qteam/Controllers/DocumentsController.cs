@@ -33,7 +33,9 @@ namespace DocumentManagement.Controllers
         public IActionResult Create()
         {
             var process = _context.Process.ToList();
+            var category = _context.Category.ToList();
             ViewBag.process = process;
+            ViewBag.category = category;
 
             if (process.Count < 1)
             {
@@ -44,7 +46,7 @@ namespace DocumentManagement.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id, Title, ProcessId, Category, Code, File")] DocumentModel document)
+        public async Task<IActionResult> Create([Bind("Id, Title, ProcessId, CategoryId, Code, File")] DocumentModel document)
         {
             var process = _context.Process.ToList();
             ViewBag.process = process;

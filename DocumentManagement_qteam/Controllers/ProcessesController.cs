@@ -30,13 +30,16 @@ namespace DocumentManagement.Controllers
 
         public IActionResult Create()
         {
+            
             return View();
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name")] Process process)
+        public async Task<IActionResult> Create([Bind("Id, Name, CategoryId")] Process process)
         {
+            var category = _context.Category;
+            ViewBag.category = category;
             if (ModelState.IsValid)
             {
                 var response = await _processRepository.InsertProcess(process);

@@ -23,10 +23,9 @@ namespace DocumentManagement.Models
 
         public Process? Process { get; set; }
 
-        [StringLength(100, MinimumLength = 5, ErrorMessage = "The Category must contain at least 5 characters")]
         [Required(ErrorMessage = "Please choose the Category of the document")]
         [Column("Category")]
-        public string Category { get; set; }
+        public int CategoryId { get; set; }
 
         [Required(ErrorMessage = "Please insert a valid document code")]
         [DocumentCodeCustomValidation]

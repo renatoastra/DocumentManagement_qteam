@@ -15,6 +15,6 @@ namespace DocumentManagement.Helpers
                 return ValidationResult.Success;
             }
             return new ValidationResult("This document code it's already in use. please choose another.");
-        }
+         }
     }
 }

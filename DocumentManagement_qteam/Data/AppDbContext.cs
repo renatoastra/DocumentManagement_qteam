@@ -12,5 +12,7 @@ namespace DocumentManegemant.Data
 
         public DbSet<DocumentModel> Document { get; set; }
         public DbSet<Process> Process { get; set; }
+
+        public DbSet<CategoryModel> Category { get; set; }    
     }
 }

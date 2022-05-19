@@ -68,9 +68,14 @@
                 <span asp-validation-for="ProcessId" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Category" class="control-label mb-2 font-monospace"></label>
-                <input asp-for="Category" class="form-control" />
-                <span asp-validation-for="Category" class="text-danger"></span>
+                <label asp-for="Process.Category" class="control-label mb-2 font-monospace"></label>
+                <select asp-for="CategoryId" class="form-control" >
+                @foreach (var category in ViewBag.category)
+                            {
+                              <option class="font-monospace" value="@category.Id">@category.Name</option>
+                            }    
+                </select>
+                <span asp-validation-for="CategoryId" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Code" class="control-label mb-2 font-monospace"></label>
